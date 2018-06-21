@@ -3,16 +3,27 @@ import { connect } from "react-redux";
 
 import isLoggedIn from "../components/isLoggedIn";
 import { fetchPosts } from "../actions/posts/index";
-import { API_URL } from "../constants";
+import PostCard from "../components/PostCard";
+import FabAdd from "../components/FabAdd";
 
 const mapStateToProps = ({ posts }) => ({
   posts: posts.posts,
   fetching: posts.fetching,
 });
 
-
 class Posts extends React.Component {
   timer = null;
+
+  shouldComponentUpdate(nextProps) {
+    if(
+      this.props.posts.length === nextProps.posts.length &&
+      this.props.posts.every(({ id }, i) => id === nextProps.posts[i].id)
+    ) {
+      return false;
+    }
+
+    return true;
+  }
 
   componentDidMount() {
     this.fetchPosts();
@@ -31,15 +42,18 @@ class Posts extends React.Component {
 
   render() {
     const posts = this.props.posts.map( post => (
-      <p key={`post-${post.id}`}><a href={`${API_URL}/posts/${post.id}`}>{JSON.stringify(post)}</a></p>
+      <PostCard key={`post-${post.id}`} post={post} />
     ) );
     
     const shouldDisplayLoading = this.props.posts.length <= 0 && this.props.fetching;
 
     return (
       <React.Fragment>
-        <h1>Hi mate!</h1>
-        {posts}
+        <div id="posts">
+          {posts}
+        </div>
+
+        <FabAdd />
         {shouldDisplayLoading ? "Loading..." : ""}
       </React.Fragment>
     );

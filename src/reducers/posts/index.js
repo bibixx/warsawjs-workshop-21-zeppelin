@@ -1,9 +1,13 @@
-import { FETCH_START, FETCH_SUCCESS } from "../../actions/posts/index";
+import { FETCH_START, FETCH_SUCCESS, POST_SUCCESS } from "../../actions/posts/index";
 
 const initialState = {
+  /*
   posts: [],
+  /*/
+  posts: [{"id":"5b2be7a143fa4200147ea9eb","image":"http://warsawjs-21-api.herokuapp.com/static/instgr.png","title":"My first UI project!","owner":"bibixx","date":1529604001151}],
+  // */
   fetching: false,
-}
+};
 
 const reducer = (state = initialState, action) => {
   const newState = {...state};
@@ -19,6 +23,13 @@ const reducer = (state = initialState, action) => {
     case FETCH_SUCCESS: {
       newState.posts = action.payload;
       newState.fetching = false;
+
+      break;
+    }
+
+    case POST_SUCCESS: {
+      const post = action.payload;
+      newState.posts.push(post);
 
       break;
     }
