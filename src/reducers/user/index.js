@@ -7,7 +7,7 @@ const defaultState = {
   username: "bibixx",
   //*/
   fetching: false,
-}
+};
 
 const reducer = (state = defaultState, action) => {
   const newState = {...state};
@@ -30,6 +30,6 @@ const reducer = (state = defaultState, action) => {
   }
 
   return newState;
-}
+};
 
 export default reducer;

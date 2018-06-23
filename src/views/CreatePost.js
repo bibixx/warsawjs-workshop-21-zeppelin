@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { postPost } from "../actions/posts";
 import isLoggedIn from "../components/isLoggedIn";
 import Card from "@material-ui/core/Card";

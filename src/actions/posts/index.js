@@ -4,9 +4,9 @@ export const FETCH_START = "POSTS_FETCH_START";
 export const FETCH_SUCCESS = "POSTS_FETCH_SUCCESS";
 export const POST_SUCCESS = "POSTS_POST_SUCCESS";
 
-export const fetchStart = () => ({ type: FETCH_START })
-export const fetchSuccess = (posts) => ({ type: FETCH_SUCCESS, payload: posts })
-export const postSuccess = (post) => ({ type: POST_SUCCESS, payload: post })
+export const fetchStart = () => ({ type: FETCH_START });
+export const fetchSuccess = (posts) => ({ type: FETCH_SUCCESS, payload: posts });
+export const postSuccess = (post) => ({ type: POST_SUCCESS, payload: post });
 
 export const fetchPosts = () => async dispatch => {
   dispatch(fetchStart());

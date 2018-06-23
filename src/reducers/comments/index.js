@@ -3,7 +3,7 @@ import { FETCH_START, FETCH_SUCCESS, POST_SUCCESS } from "../../actions/comments
 const initialState = {
   comments: {},
   fetching: false,
-}
+};
 
 const reducer = (state = initialState, action) => {
   const newState = {...state};
