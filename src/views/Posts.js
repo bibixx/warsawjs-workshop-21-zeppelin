@@ -34,8 +34,8 @@ class Posts extends React.Component {
     this.timer = null;
   }
   
-  fetchPosts = () => {
-    this.props.dispatch(fetchPosts());
+  fetchPosts = async () => {
+    await this.props.dispatch(fetchPosts());
 
     this.timer = setTimeout(this.fetchPosts, 2000);
   }
