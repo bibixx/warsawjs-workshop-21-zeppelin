@@ -1,4 +1,6 @@
 import React from "react";
+import { startLogin } from "../actions/user/";
+import { connect } from "react-redux";
 
 class Login extends React.Component {
   constructor() {
@@ -12,9 +14,10 @@ class Login extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
 
+    
     const { username, password } = this.state;
-
-    console.log(username, password);
+    
+    this.props.dispatch(startLogin(username, password));
   }
 
   onChangeUsername = (e) => {
@@ -53,4 +56,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default connect()(Login);
