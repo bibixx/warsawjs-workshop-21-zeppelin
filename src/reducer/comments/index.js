@@ -10,7 +10,7 @@ const commentsReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case COMMENTS_FETCH_START: {
-      newState.fetching = true;
+      newState.fetching = true; 
       return newState;
     }
 
