@@ -16,6 +16,9 @@ const postsReducer = (state = initialState, action) => {
     
     case POSTS_FETCHING_SUCCESS: {
       newState.posts = action.posts;
+
+      // console.log(action.posts);
+
       newState.fetching = false;
 
       return newState;

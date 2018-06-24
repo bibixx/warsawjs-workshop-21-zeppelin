@@ -1,9 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
+import { commentsFetch } from "../actions/comments/index";
 
-export default class PostById extends React.Component {
+class PostById extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log(id);
+
+    this.props.dispatch(commentsFetch(id));
   }
 
   render() {
@@ -12,3 +15,5 @@ export default class PostById extends React.Component {
     );
   }
 }
+
+export default connect()(PostById)
