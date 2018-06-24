@@ -1,5 +1,5 @@
 import React from "react";
-import { startLogin } from "../actions/user/";
+import { login } from "../actions/user/";
 import { connect } from "react-redux";
 
 class Login extends React.Component {
@@ -11,13 +11,16 @@ class Login extends React.Component {
     }
   }
 
+  // state = {
+  //   username: "",
+  //   password: ""
+  // }
+
   onSubmit = (e) => {
     e.preventDefault();
-
-    
     const { username, password } = this.state;
     
-    this.props.dispatch(startLogin(username, password));
+    this.props.dispatch(login(username, password));
   }
 
   onChangeUsername = (e) => {
