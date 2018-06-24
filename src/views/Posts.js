@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import isLoggedIn from "../components/isLoggedIn";
-import { fetchPosts } from "../actions/posts/index";
+import { fetchPosts } from "../actions/posts/";
 import PostCard from "../components/PostCard";
 import FabAdd from "../components/FabAdd";
 

@@ -1,7 +1,7 @@
 import { LOGIN_START, LOGIN_SUCCESS } from "../../actions/user/index";
 
 const defaultState = {
-  /*
+  // /*
   username: "",
   /*/
   username: "bibixx",

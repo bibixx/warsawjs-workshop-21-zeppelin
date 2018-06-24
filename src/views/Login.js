@@ -1,13 +1,24 @@
 import React from "react";
-import { login } from "../actions/user";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
 
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+
+import { login } from "../actions/user";
 
 const mapStateToProps = ({ user }) => ({
   fetching: user.fetching,
   username: user.username
 });
+
+const styles = {
+  root: {
+    width: 750,
+    margin: [[0, "auto"]]
+  }
+};
 
 class Login extends React.Component {
   state = {
@@ -72,24 +83,44 @@ class Login extends React.Component {
       );
     }
 
+    const { classes } = this.props;
+
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit} className={classes.root}>
           <h1>Login</h1>
 
-          <h2>Username</h2>
-          <input type="text" onChange={this.onUsernameChange} />
-          <p>{ this.state.usernameError ? "You must specify username" : "" }</p>
+          <TextField
+            label="Username"
+            type="text"
+            fullWidth
+            onChange={this.onUsernameChange}
+            margin="normal"
+            error={this.state.usernameError !== false}
+            helperText={this.state.usernameError ? "You must specify username" : " "}
+          />
 
-          <h2>Password</h2>
-          <input type="password" onChange={this.onPasswordChange} />
-          <p>{ this.state.passwordError ? "You must specify password" : "" }</p>
+          <TextField
+            label="Password"
+            type="password"
+            fullWidth
+            onChange={this.onPasswordChange}
+            error={this.state.passwordError !== false}
+            helperText={this.state.passwordError ? "You must specify password" : " "}
+          />
 
-          <button type="submit">Log in</button>
+          <br/>
+          <br/>
+
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+          >Log in</Button>
         </form>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(withStyles(styles)(Login));
