@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS } from "../../actions/user/index";
+import { LOGIN_SUCCESS, LOGIN_START } from "../../actions/user/index";
 
 const initialState = {
   username: "",
@@ -11,6 +11,13 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS: {
       newState.username = action.login;
+      newState.fetching = false;
+
+      return newState;
+    }
+
+    case LOGIN_START: {
+      newState.fetching = true;
 
       return newState;
     }
