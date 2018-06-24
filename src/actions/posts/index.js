@@ -12,5 +12,5 @@ export const postsFetch = () => async dispatch => {
 
   console.log(response);
 
-  dispatch(postsSuccess());
+  dispatch(postsSuccess(response.posts));
 }
