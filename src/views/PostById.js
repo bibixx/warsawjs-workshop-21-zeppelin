@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { commentsFetch } from "../actions/comments/index";
 import { postsFetch } from "../actions/posts/";
 
+import isLoggedIn from "../components/isLoggedIn";
+
 const mapStateToProps = (state, props) => ({
   post: state.posts.posts.find(post => post.id === props.match.params.id),
   comments: state.comments.comments[props.match.params.id] || []
@@ -27,4 +29,4 @@ class PostById extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(PostById)
+export default isLoggedIn(connect(mapStateToProps)(PostById));

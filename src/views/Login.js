@@ -1,9 +1,11 @@
 import React from "react";
 import { login } from "../actions/user/";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 const mapStateToProps = state => ({
-  fetching: state.user.fetching
+  fetching: state.user.fetching,
+  username: state.user.username,
 });
 
 class Login extends React.Component {
@@ -14,11 +16,6 @@ class Login extends React.Component {
       password: ""
     }
   }
-
-  // state = {
-  //   username: "",
-  //   password: ""
-  // }
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -40,6 +37,10 @@ class Login extends React.Component {
   }
 
   render() {
+    if (this.props.username !== "") {
+      return (<Redirect to="/posts/" />);
+    }
+
     if (!this.props.fetching) {
       return (
         <form onSubmit={this.onSubmit}>

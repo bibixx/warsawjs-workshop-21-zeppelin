@@ -6,7 +6,6 @@ export const loginStart = () => ({ type: LOGIN_START });
 
 export const login = (login, password) => async dispatch => {
   dispatch(loginStart());
-  await new Promise(res => setTimeout(res, 5000));
   const response = await fetch("https://warsawjs-21-api.herokuapp.com/auth/", {
     method: "POST",
     body: JSON.stringify({

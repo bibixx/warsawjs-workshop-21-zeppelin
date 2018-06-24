@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { postsFetch } from "../actions/posts/";
 import { Link } from "react-router-dom";
+import isLoggedIn from "../components/isLoggedIn";
+
 
 const mapStateToProps = ({ posts }) => ({
   posts: posts.posts,
@@ -24,6 +26,7 @@ class Posts extends React.Component {
 
     return (
       <div>
+        <Link to="/create-post">Create</Link>
         <h1>Posts</h1>
         { posts }
       </div>
@@ -31,4 +34,4 @@ class Posts extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(Posts);
+export default isLoggedIn(connect(mapStateToProps)(Posts));
