@@ -3,7 +3,7 @@ import { login } from "../actions/user/";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
-  fetching: state.fetching
+  fetching: state.user.fetching
 });
 
 class Login extends React.Component {
@@ -55,7 +55,7 @@ class Login extends React.Component {
             type="password"
             placeholder="password"
             value={this.state.password}
-            onChange={this.onChangePassword} 
+            onChange={this.onChangePassword}
           />
   
           <button>Submit</button>
